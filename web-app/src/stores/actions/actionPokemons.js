@@ -10,12 +10,30 @@ export const fetchSuccessPokemons = (data) => {
   };
 };
 
-export const fetchPokemons = () => {
+export const fetchPokemons = (url) => {
   return async (dispatch) => {
     try {
-      const { data } = await axios.get(`${baseUrl}pokemon`);
+      const fetchUrl = url || `${baseUrl}pokemon/?offset=0&limit=21`;
+      const { data } = await axios.get(fetchUrl);
 
       dispatch(fetchSuccessPokemons(data.results));
+      return data;
+    } catch (err) {
+      Swal.fire({
+        title: "Oops...",
+        icon: "error",
+        text: err.message,
+      });
+    }
+  };
+};
+
+export const fetchOnePokemon = (url) => {
+  return async () => {
+    try {
+      const { data } = await axios.get(`${url}`);
+
+      return data;
     } catch (err) {
       Swal.fire({
         title: "Oops...",

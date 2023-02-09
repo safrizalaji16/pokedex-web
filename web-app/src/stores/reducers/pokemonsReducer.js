@@ -5,7 +5,6 @@ const stateData = {
 };
 
 export default function pokemonsReducer(state = stateData, action) {
-  console.log(action.data);
   switch (action.type) {
     case FETCH_POKEMONS:
       return {
