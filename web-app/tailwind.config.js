@@ -6,11 +6,7 @@ module.exports = {
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
-    extend: {
-      backgroundImage: {
-        "bg-pokedex": "url('/public/pokemon.jpg')",
-      },
-    },
+    extend: {},
   },
   plugins: [require("daisyui")],
 };
